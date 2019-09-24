@@ -1,0 +1,22 @@
+return {
+	on = {
+		devices = { 
+		    292, 
+		    293
+		}
+	},
+	logging = {
+        marker = "Iemand thuis script"
+    },
+	execute = function(domoticz, triggeredItem)
+	    local iemandThuis                  = domoticz.devices(306)
+	    local ej                           = domoticz.devices(292)
+	    local p                            = domoticz.devices(293)
+	    
+	    if(ej.active or p.active) then
+	        iemandThuis.switchOn()
+	    else 
+	        iemandThuis.switchOff()
+	    end
+	end
+}
