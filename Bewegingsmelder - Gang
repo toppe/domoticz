@@ -8,7 +8,7 @@ return {
 	execute = function(domoticz, bewegingsmelder)
 	
 		--Bepaal een aantal local variables
-		local lichtVoordeur			= domoticz.devices(lightGangVoordeur)
+		local lichtVoordeur				= domoticz.devices(lightGangVoordeur)
 		local lichtTrap					= domoticz.devices(lightGangTrap)
 		local lichtStrip				= domoticz.devices(lightLedKeuken)
 		
