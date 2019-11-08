@@ -1,8 +1,8 @@
 return {
 	on = {
 		devices = { 
-		    292, 
-		    293
+		    292, -- One user
+		    293  -- Second user
 		}
 	},
 	logging = {
@@ -13,10 +13,10 @@ return {
 	    local ej                           = domoticz.devices(292)
 	    local p                            = domoticz.devices(293)
 	    
-	    if(ej.active or p.active) then
-	        iemandThuis.switchOn()
+	    if(ej.active) or (p.active) then
+	        iemandThuis.switchOn().checkFirst()
 	    else 
-	        iemandThuis.switchOff()
+	        iemandThuis.switchOff().checkFirst()
 	    end
 	end
 }
