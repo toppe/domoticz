@@ -1,0 +1,23 @@
+return {
+   on = {
+      timer = { 'every minute' }
+   },
+   logging = {
+        marker = "Amperage"
+    },
+   execute = function(domoticz, roomSwitch)
+       
+       -- Get current usage and voltage
+       currentEnergy = domoticz.devices(deviceEnergy).WhActual
+       currentVoltage = domoticz.devices(deviceVoltage).voltage
+       
+       -- Calculate and round the current amperage
+       CalcAmperage = domoticz.utils.round(currentEnergy / currentVoltage, '2')
+       
+       -- Update device with current value. Changes when voltage of usage changes.
+       domoticz.devices(deviceAmperage).updateCurrent(CalcAmperage)
+       
+       domoticz.log("Amperage vastgesteld op "..CalcAmperage.."A")
+       
+   end
+}
